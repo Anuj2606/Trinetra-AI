@@ -1,74 +1,75 @@
 import { motion } from "framer-motion";
-import {
-  HiShieldCheck,
-  HiSparkles,
-  HiGlobeAlt,
-} from "react-icons/hi";
+import { ShieldCheck, Globe2, Activity } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white p-16">
-
-      {/* Background blur */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-32 left-0 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl"></div>
-
+    <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm lg:p-12">
       <motion.div
-        initial={{ opacity: 0, y: 35 }}
+        initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: .8 }}
-        className="relative z-10"
+        transition={{ duration: 0.8 }}
+        className="grid gap-8 lg:grid-cols-[1.2fr_0.9fr] lg:items-center"
       >
+        <div>
+          <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 lg:text-5xl">
+            Analyze suspicious links in seconds.
+          </h1>
 
-        <span className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-5 py-2 rounded-full text-sm font-semibold">
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+            Trinetra AI helps you check any URL against trusted cybersecurity signals so you can quickly understand whether it is phishing, malicious, or safe.
+          </p>
 
-          <HiSparkles />
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-500">
+            Paste a site address, review multi-provider threat evidence, and get a clear risk summary before taking action.
+          </p>
 
-          AI Powered Threat Intelligence
-
-        </span>
-
-        <h1 className="mt-8 text-6xl font-extrabold leading-tight">
-
-          Detect Fraud
-
-          <br />
-
-          Before It Happens
-
-        </h1>
-
-        <p className="mt-6 text-xl text-slate-300 max-w-3xl leading-9">
-
-          Analyze suspicious URLs using Artificial Intelligence,
-          VirusTotal, Google Safe Browsing,
-          URLScan and RDAP to detect phishing,
-          malware and online fraud in real time.
-
-        </p>
-
-        <div className="flex gap-8 mt-12">
-
-          <div className="flex items-center gap-3">
-
-            <HiShieldCheck className="text-emerald-400 text-2xl"/>
-
-            Multi Engine Detection
-
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 text-sm font-medium text-slate-700 md:flex-row">
+            <div className="flex w-full max-w-[220px] items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-center">
+              Multi-engine detection
+            </div>
+            <div className="flex w-full max-w-[220px] items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-center">
+              Global threat visibility
+            </div>
+            <div className="flex w-full max-w-[220px] items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-center">
+              Real-time risk signals
+            </div>
           </div>
-
-          <div className="flex items-center gap-3">
-
-            <HiGlobeAlt className="text-cyan-400 text-2xl"/>
-
-            Global Threat Intelligence
-
-          </div>
-
         </div>
 
-      </motion.div>
+        <div className="rounded-[28px] border border-slate-200 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-[1px] shadow-sm">
+          <div className="rounded-[27px] bg-slate-950/95 p-7 text-white">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-200">
+                  Trinetra AI
+                </div>
+                <div className="mt-2 text-2xl font-semibold text-white">
+                  URL threat assessment
+                </div>
+              </div>
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-200">
+                <ShieldCheck size={20} />
+              </span>
+            </div>
 
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div className="text-sm font-medium text-slate-200">
+                Checks suspicious URLs using multiple security intelligence sources in one place.
+              </div>
+              <div className="mt-4 space-y-3">
+                <div className="rounded-xl bg-white/5 px-4 py-3">
+                  <div className="text-xs uppercase tracking-[0.2em] text-slate-300">Signals</div>
+                  <div className="mt-2 text-sm font-semibold text-white">VirusTotal • Safe Browsing • RDAP • URLScan</div>
+                </div>
+                <div className="rounded-xl bg-white/5 px-4 py-3">
+                  <div className="text-xs uppercase tracking-[0.2em] text-slate-300">Outcome</div>
+                  <div className="mt-2 text-sm font-semibold text-white">Clear verdict in one view</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

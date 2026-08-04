@@ -12,11 +12,8 @@ import api from "../services/api";
 export default function Dashboard() {
 
     const location = useLocation();
+    const result = location?.state;
 
-    const result = location.state;
-    console.log(result);
-    console.log(result.providers);
-    console.log(result.providers.urlscan);
     if (!result) {
         return <Navigate to="/" replace />;
     }
@@ -46,7 +43,7 @@ export default function Dashboard() {
 
             link.href = url;
 
-            link.download = "FraudShield_Report.pdf";
+            link.download = "Trinetra_Report.pdf";
 
             document.body.appendChild(link);
 
@@ -80,15 +77,15 @@ export default function Dashboard() {
 
                     <div>
 
-                        <h1 className="text-4xl font-bold">
+                        <h1 className="text-3xl font-bold text-slate-900">
 
-                            Fraud Detection Report
+                            Trinetra AI Threat Intelligence Report
 
                         </h1>
 
                         <p className="text-slate-500 mt-2">
 
-                            AI Threat Intelligence Report
+                            Comprehensive fraud and phishing intelligence view
 
                         </p>
 
