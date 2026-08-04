@@ -5,13 +5,13 @@ import ScanBox from "../components/ui/ScanBox";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100">
+    <div className="min-h-screen bg-slate-50 text-slate-900">
 
       {/* Navbar */}
       <Navbar />
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 lg:px-8 py-10 space-y-14">
+      <main className="mx-auto max-w-7xl space-y-14 px-6 py-10 lg:px-8">
 
         {/* Hero Section */}
         <Hero />

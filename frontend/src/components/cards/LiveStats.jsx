@@ -42,7 +42,7 @@ export default function LiveStats() {
 
   return (
 
-    <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
 
       {cards.map((card) => (
 
@@ -51,35 +51,37 @@ export default function LiveStats() {
           key={card.title}
 
           whileHover={{
-            y: -6,
-            scale: 1.02
+            y: -4,
+            scale: 1.01
           }}
 
           transition={{
             duration: .2
           }}
 
-          className="bg-white rounded-3xl shadow-lg border border-slate-200 p-8"
+          className="flex min-h-[180px] flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
 
         >
 
-          <div className={`${card.bg} w-16 h-16 rounded-2xl flex items-center justify-center`}>
+          <div className={`${card.bg} flex h-14 w-14 items-center justify-center rounded-xl`}>
 
             {card.icon}
 
           </div>
 
-          <h2 className="mt-6 text-4xl font-bold text-slate-900">
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900">
 
-            {card.value}
+              {card.value}
 
-          </h2>
+            </h2>
 
-          <p className="mt-2 text-slate-500">
+            <p className="mt-1 text-sm font-medium text-slate-500">
 
-            {card.title}
+              {card.title}
 
-          </p>
+            </p>
+          </div>
 
         </motion.div>
 
