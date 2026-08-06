@@ -14,7 +14,8 @@ class RiskEngine:
         safe,
         rdap,
         urlscan,
-        url_features
+        url_features,
+        redirect_info=None
     ):
 
         # --------------------------
@@ -177,6 +178,23 @@ class RiskEngine:
             reasons.append(
                 f"Suspicious keywords detected: {', '.join(url_features['keywords'])}"
             )
+
+        # --------------------------
+        # Redirect Logic
+        # --------------------------
+
+        if redirect_info and redirect_info.get("redirect_count", 0) > 0:
+            count = redirect_info["redirect_count"]
+            score += 15 + (count * 5)
+            reasons.append(
+                f"URL uses redirects ({count} hops) to hide final destination."
+            )
+            
+            # If the final destination is different from the original submitted, 
+            # and it redirected through a known shortener or multiple times, that's high risk.
+            if url_features.get("shortener"):
+                score += 20
+                reasons.append("Shortened URL hiding the final destination.")
 
         score = min(score, 100)
 

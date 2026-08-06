@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.router import router
 
-app = FastAPI(title="FraudShield AI API")
+app = FastAPI(title="Trinetra AI API")
 
 app.add_middleware(
     CORSMiddleware,

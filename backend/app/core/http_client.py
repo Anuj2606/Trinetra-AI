@@ -1,7 +1,7 @@
 """
 Shared HTTP Client
 
-Every external API request in FraudShield AI goes through this client.
+Every external API request in Trinetra AI goes through this client.
 """
 
 from typing import Any, Dict, Optional

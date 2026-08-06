@@ -46,6 +46,7 @@ class URLFeatureAnalyzer:
         "bit.ly",
         "tinyurl.com",
         "t.co",
+        "twitter.com",
         "goo.gl",
         "ow.ly",
         "is.gd"
