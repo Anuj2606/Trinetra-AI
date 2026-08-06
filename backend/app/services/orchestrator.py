@@ -1,4 +1,6 @@
 import asyncio
+import httpx
+from urllib.parse import urlparse
 
 from app.services.providers.virustotal_provider import VirusTotalProvider
 from app.services.providers.safebrowsing_provider import SafeBrowsingProvider
@@ -31,29 +33,61 @@ class ScanOrchestrator:
 
         self.url_features = URLFeatureAnalyzer()
 
+    async def resolve_url(self, url: str):
+        redirect_count = 0
+        final_url = url
+        try:
+            async with httpx.AsyncClient(follow_redirects=False, timeout=10.0) as client:
+                for _ in range(5):
+                    response = await client.get(final_url)
+                    if response.is_redirect:
+                        redirect_count += 1
+                        location = response.headers.get("Location")
+                        if location:
+                            if not location.startswith("http"):
+                                parsed = urlparse(final_url)
+                                location = f"{parsed.scheme}://{parsed.netloc}{location}"
+                            final_url = location
+                        else:
+                            break
+                    else:
+                        break
+        except Exception as e:
+            print(f"Error resolving URL {url}: {e}")
+            pass
+        return {"final_url": final_url, "redirect_count": redirect_count}
+
     async def analyze(self, url: str):
-        url_features = self.url_features.analyze(url)
+        redirect_info = await self.resolve_url(url)
+        final_url = redirect_info["final_url"]
+
+        original_features = self.url_features.analyze(url)
+        url_features = self.url_features.analyze(final_url)
+        
+        # Keep the shortener flag if the original URL was a shortener
+        if original_features.get("shortener"):
+            url_features["shortener"] = True
 
         vt, safe, rdap, urlscan = await asyncio.gather(
 
     ProviderRunner.run(
         "VirusTotal",
-        self.vt.analyze(url)
+        self.vt.analyze(final_url)
     ),
 
     ProviderRunner.run(
         "Google Safe Browsing",
-        self.safe.analyze(url)
+        self.safe.analyze(final_url)
     ),
 
     ProviderRunner.run(
         "RDAP",
-        self.rdap.analyze(url)
+        self.rdap.analyze(final_url)
     ),
 
     ProviderRunner.run(
         "URLScan",
-        self.urlscan.analyze(url)
+        self.urlscan.analyze(final_url)
     )
 
 )
@@ -63,7 +97,8 @@ class ScanOrchestrator:
     safe,
     rdap,
     urlscan,
-    url_features
+    url_features,
+    redirect_info
 )
 
         providers = {

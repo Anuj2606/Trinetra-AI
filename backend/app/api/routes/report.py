@@ -19,7 +19,7 @@ def generate_report(result: dict):
 
     story = []
 
-    story.append(Paragraph("<b>FraudShield AI Report</b>", styles["Title"]))
+    story.append(Paragraph("<b>Trinetra AI Report</b>", styles["Title"]))
 
     story.append(Paragraph(f"<b>URL:</b> {result['url']}", styles["BodyText"]))
 
@@ -48,6 +48,6 @@ def generate_report(result: dict):
 
     return FileResponse(
         tmp.name,
-        filename="FraudShield_Report.pdf",
+        filename="Trinetra_Report.pdf",
         media_type="application/pdf",
     )

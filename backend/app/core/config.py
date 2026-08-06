@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    APP_NAME: str = "FraudShield AI"
+    APP_NAME: str = "Trinetra AI"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = True
 

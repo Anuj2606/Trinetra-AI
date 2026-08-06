@@ -1,20 +1,20 @@
 """
-Custom exceptions used throughout the FraudShield AI backend.
+Custom exceptions used throughout the Trinetra AI backend.
 
 Having custom exceptions allows every provider to raise meaningful,
 consistent errors instead of generic Exception objects.
 """
 
 
-class FraudShieldException(Exception):
-    """Base exception for the FraudShield AI project."""
+class TrinetraException(Exception):
+    """Base exception for the Trinetra AI project."""
 
     def __init__(self, message: str):
         self.message = message
         super().__init__(message)
 
 
-class ProviderError(FraudShieldException):
+class ProviderError(TrinetraException):
     """Raised when a provider encounters an error."""
 
 
@@ -30,17 +30,17 @@ class ExternalServiceUnavailableError(ProviderError):
     """Raised when an external provider is unavailable."""
 
 
-class InvalidURLException(FraudShieldException):
+class InvalidURLException(TrinetraException):
     """Raised when an invalid URL is provided."""
 
 
-class RiskScoringError(FraudShieldException):
+class RiskScoringError(TrinetraException):
     """Raised when risk scoring fails."""
 
 
-class AIProviderError(FraudShieldException):
+class AIProviderError(TrinetraException):
     """Raised when the AI provider (Gemini) fails."""
 
 
-class ConfigurationError(FraudShieldException):
+class ConfigurationError(TrinetraException):
     """Raised when required configuration is missing."""

@@ -30,7 +30,7 @@ class SafeBrowsingProvider(BaseProvider):
 
         payload = {
             "client": {
-                "clientId": "FraudShieldAI",
+                "clientId": "TrinetraAI",
                 "clientVersion": "1.0"
             },
             "threatInfo": {
