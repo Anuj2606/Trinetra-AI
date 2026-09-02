@@ -699,13 +699,3 @@ python test_orchestrator.py
 - GitHub: [@Anuj2606](https://github.com/Anuj2606)
 
 ---
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-<p align="center">
-  <b>Built with ❤️ for a safer internet</b>
-</p>
