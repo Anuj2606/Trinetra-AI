@@ -53,7 +53,8 @@ jobs:
             --environment "$CONTAINER_ENVIRONMENT" \
             --image "$IMAGE" \
             --registry-server "$ACR_LOGIN_SERVER" \
-            --registry-identity system \
+            --registry-username "${{ secrets.AZURE_CLIENT_ID }}" \
+            --registry-password "${{ secrets.AZURE_CLIENT_SECRET }}" \
             --ingress external \
             --target-port 8000 \
             --cpu 0.5 \
