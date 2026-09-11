@@ -30,32 +30,36 @@ class ScanCRUD:
 
         )
 
-        db.add(scan)
+        try:
+            db.add(scan)
 
-        db.commit()
+            db.commit()
 
-        db.refresh(scan)
+            db.refresh(scan)
 
-        # --------------------------
-        # Save provider responses
-        # --------------------------
+            # --------------------------
+            # Save provider responses
+            # --------------------------
 
-        for provider, response in result["providers"].items():
+            for provider, response in result["providers"].items():
 
-            provider_row = ProviderResult(
+                provider_row = ProviderResult(
 
-                scan_id=scan.id,
+                    scan_id=scan.id,
 
-                provider=provider,
+                    provider=provider,
 
-                success=response.get("success", False),
+                    success=response.get("success", False),
 
-                response=response
+                    response=response
 
-            )
+                )
 
-            db.add(provider_row)
+                db.add(provider_row)
 
-        db.commit()
+            db.commit()
+        except Exception:
+            db.rollback()
+            raise
 
         return scan

@@ -231,6 +231,15 @@ Provider Call
 | **React Hot Toast** | Notifications |
 | **React CountUp** | Animated number counters |
 
+### Deployment
+| Technology | Purpose |
+|---|---|
+| **Docker** | Containerized backend and frontend images |
+| **Docker Compose** | Local backend, PostgreSQL, and frontend orchestration |
+| **Azure Container Registry** | Private image storage |
+| **Azure Container Apps** | Managed backend and frontend hosting |
+| **GitHub Actions** | Automated image build and deployment on pushes to `main` |
+
 ---
 
 ## 📂 Project Structure
@@ -238,7 +247,13 @@ Provider Call
 ```
 TrinetraAI/
 │
+├── .github/
+│   └── workflows/
+│       ├── deploy-backend.yml          # Azure backend deployment
+│       └── deploy-frontend.yml         # Azure frontend deployment
+│
 ├── backend/
+│   ├── Dockerfile                       # Backend container image
 │   ├── app/
 │   │   ├── api/                        # API layer
 │   │   │   ├── router.py               # Central router aggregation
@@ -302,6 +317,8 @@ TrinetraAI/
 │   └── test_url_features.py            # URL feature analyzer test
 │
 ├── frontend/
+│   ├── Dockerfile                       # Frontend container image
+│   ├── nginx.conf                       # Production frontend server config
 │   ├── src/
 │   │   ├── App.jsx                     # Route definitions
 │   │   ├── main.jsx                    # React DOM entry point
@@ -337,10 +354,10 @@ TrinetraAI/
 │   ├── vite.config.ts
 │   └── index.html
 │
-├── docker/                             # Docker configuration (planned)
+├── docker/                             # Docker configuration
 ├── docs/                               # Documentation (planned)
 ├── screenshots/                        # UI screenshots (planned)
-├── docker-compose.yml                  # Docker Compose (planned)
+├── docker-compose.yml                  # Local API, database, and frontend stack
 └── .gitignore
 ```
 
@@ -353,6 +370,7 @@ TrinetraAI/
 - **Python 3.11+**
 - **Node.js 18+** and **npm**
 - **PostgreSQL 15+**
+- **Docker** and **Docker Compose** (optional, for containerized local development)
 - API Keys for:
   - [VirusTotal](https://www.virustotal.com/gui/join-us) (free tier available)
   - [Google Safe Browsing](https://developers.google.com/safe-browsing) (free)
@@ -442,6 +460,54 @@ npm run dev
 ```
 
 The frontend will be available at `http://localhost:5173`.
+
+### 7. Run with Docker Compose
+
+From the project root, provide the database password through `backend/.env` and start the complete local stack:
+
+```bash
+docker compose --env-file backend/.env up --build
+```
+
+The frontend will be available at `http://localhost:5173` and the backend at `http://localhost:8000`.
+
+---
+
+## ☁️ Azure Deployment
+
+Trinetra AI is deployed to Azure using GitHub Actions, Azure Container Registry, and Azure Container Apps.
+
+### Azure Resources
+
+| Resource | Value |
+|---|---|
+| **Container Registry** | `ca4a568f175bacr.azurecr.io` |
+| **Resource Group** | `rg-trinetra-ai` |
+| **Container Apps Environment** | `trinetra-env` |
+| **Backend Container App** | `trinetra-backend` |
+| **Frontend Container App** | `trinetra-frontend` |
+
+### GitHub Actions Workflows
+
+The workflows run automatically when changes are pushed to the `main` branch:
+
+- `.github/workflows/deploy-backend.yml` builds and deploys the FastAPI backend.
+- `.github/workflows/deploy-frontend.yml` builds and deploys the React frontend.
+
+Both workflows build Docker images, push them to Azure Container Registry, and deploy new revisions to Azure Container Apps.
+
+### Required GitHub Secrets
+
+Add the following repository secrets under **Settings → Secrets and variables → Actions**:
+
+- `AZURE_CLIENT_ID`
+- `AZURE_CLIENT_SECRET`
+- `AZURE_SUBSCRIPTION_ID`
+- `AZURE_TENANT_ID`
+
+Backend provider API keys and database settings are configured as Azure Container App secrets and environment variables. Secret values should never be committed to the repository or added to this README.
+
+The frontend production build uses the deployed backend API URL through the `VITE_API_URL` Docker build argument.
 
 ---
 
@@ -681,7 +747,7 @@ python test_orchestrator.py
 
 ## 🔮 Roadmap
 
-- [ ] Docker containerization (Compose setup for API + DB + Frontend)
+- [x] Docker containerization (Compose setup for API + DB + Frontend)
 - [ ] User authentication (JWT-based signup/login)
 - [ ] Browser extension for one-click URL scanning
 - [ ] Email alert system for high-risk scans
