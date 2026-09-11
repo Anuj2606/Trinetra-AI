@@ -8,6 +8,13 @@ on:
 permissions:
   contents: read
 
+env:
+  ACR_NAME: ca4a568f175bacr
+  ACR_LOGIN_SERVER: ca4a568f175bacr.azurecr.io
+  CONTAINER_APP_NAME: trinetra-backend
+  RESOURCE_GROUP: rg-trinetra-ai
+  CONTAINER_ENVIRONMENT: trinetra-env
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
