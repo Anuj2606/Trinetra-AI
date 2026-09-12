@@ -39,7 +39,6 @@ async def scan(
     try:
         ScanCRUD.save_scan(db, result)
     except Exception as persistence_error:
-        app_logger.exception("Scan persistence failed")
         try:
             db.rollback()
         except Exception:

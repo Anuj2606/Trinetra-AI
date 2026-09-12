@@ -3,8 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.router import router
 from app.core.config import settings
+from app.database.init_db import init_db
 
 app = FastAPI(title="Trinetra AI API")
+
+
+@app.on_event("startup")
+def initialize_database_schema():
+    init_db()
 
 app.add_middleware(
     CORSMiddleware,
