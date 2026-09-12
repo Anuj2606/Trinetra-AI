@@ -8,7 +8,7 @@ class Settings(BaseSettings):
 
     HOST: str = "0.0.0.0"
     PORT: int = 8000
-    CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
+    CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173,https://trinetra-frontend.victoriousfield-eaef4743.eastasia.azurecontainerapps.io"
 
     GEMINI_API_KEY: str = ""
     VIRUSTOTAL_API_KEY: str = ""
