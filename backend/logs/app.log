@@ -13,3 +13,518 @@
 2026-08-03 21:02:41.062 | INFO     | app.main:startup:17 - FraudShield AI Started
 2026-08-03 21:03:38.326 | INFO     | app.main:startup:17 - FraudShield AI Started
 2026-08-03 21:05:02.282 | INFO     | app.main:startup:17 - FraudShield AI Started
+2026-09-12 11:14:38.162 | INFO     | app.api.routes.scan:scan:28 - Scan started
+2026-09-12 11:15:12.446 | WARNING  | app.main:_initialize_database_schema:18 - Database schema initialization failed; API startup will continue (OperationalError)
+2026-09-12 11:15:47.655 | ERROR    | app.crud.scan_crud:save_scan:49 - Scan persistence failed type=OperationalError message=(psycopg2.OperationalError) connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:ff9b::1418:493d), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (20.24.73.61), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+    │                        │      └ <function Engine.raw_connection at 0x00000000060351C0>
+    │                        └ Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode=...
+    └ <sqlalchemy.engine.base.Connection object at 0x000000000B4C7610>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           │    │    └ <function Pool.connect at 0x0000000005205B20>
+           │    └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+           └ Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode=...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           │                │         └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+           │                └ <classmethod(<function _ConnectionFairy._checkout at 0x0000000005207D80>)>
+           └ <class 'sqlalchemy.pool.base._ConnectionFairy'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1272, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            │                 │        └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+            │                 └ <classmethod(<function _ConnectionRecord.checkout at 0x00000000052067A0>)>
+            └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+          │    └ <function QueuePool._do_get at 0x0000000005209BC0>
+          └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000000000B4FD340>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:ff9b::1418:493d), port 5432 f...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 176, in _do_get
+    return self._create_connection()
+           │    └ <function Pool._create_connection at 0x00000000052058A0>
+           └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+           │                 └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+           └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000000000B4F5010>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000000000B493000>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:ff9b::1418:493d), port 5432 f...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    │    │                               │    │               └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000000000B4F5010>
+    │    │                               │    └ <function create_engine.<locals>.connect at 0x0000000009DFC7C0>
+    │    │                               └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+    │    └ <member 'dbapi_connection' of '_ConnectionRecord' objects>
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000000000B4F5010>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           │       │        │            └ immutabledict({'host': 'trinetra-ai-db-2026.postgres.database.azure.com', 'dbname': 'flexibleserverdb', 'user': 'trinetraadmi...
+           │       │        └ []
+           │       └ <function DefaultDialect.connect at 0x00000000070BCAE0>
+           └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x0000000009E138C0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           │    │            │        │        └ {'host': 'trinetra-ai-db-2026.postgres.database.azure.com', 'dbname': 'flexibleserverdb', 'user': 'trinetraadmin', 'password'...
+           │    │            │        └ ()
+           │    │            └ <function connect at 0x0000000009F5E160>
+           │    └ <module 'psycopg2' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\psycopg2\\__init__.py'>
+           └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x0000000009E138C0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           │        │                       │                     └ {}
+           │        │                       └ None
+           │        └ 'host=trinetra-ai-db-2026.postgres.database.azure.com dbname=flexibleserverdb user=trinetraadmin password=trinetra2272 port=5...
+           └ <built-in function _connect>
+
+psycopg2.OperationalError: connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:ff9b::1418:493d), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (20.24.73.61), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=20508, pipe_handle=564)
+                                      │           └ <function spawn_main at 0x0000000001AB7100>
+                                      └ <function spawn_main at 0x0000000001AB7100>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 352
+               │     └ 3
+               └ <function _main at 0x0000000001AB71A0>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 352
+           │    └ <function BaseProcess._bootstrap at 0x00000000017E54E0>
+           └ <SpawnProcess name='SpawnProcess-1' parent=20508 started>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py", line 313, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000000017E4A40>
+    └ <SpawnProcess name='SpawnProcess-1' parent=20508 started>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x0000000003C941A0>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-1' parent=20508 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-1' parent=20508 started>
+    │    └ <function subprocess_started at 0x0000000003C2E980>
+    └ <SpawnProcess name='SpawnProcess-1' parent=20508 started>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=568, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x0000000003C942F0>>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\uvicorn\server.py", line 77, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x0000000003AE91C0>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x0000000003C941A0>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x0000000003C942F0>
+           │           │    │             └ [<socket.socket fd=568, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │           │    └ <function Server.serve at 0x0000000003C2DC60>
+           │           └ <uvicorn.server.Server object at 0x0000000003C942F0>
+           └ <function run at 0x0000000001EA6DE0>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x0000000003C46180>
+           │      └ <function Runner.run at 0x0000000003914A40>
+           └ <asyncio.runners.Runner object at 0x0000000003C94EC0>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at E:\TrinetraAI\backend\venv\Lib\site-packages\uvicorn\server.py:81...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000000039125C0>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000000003C94EC0>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x0000000003912520>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000000003914360>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2040, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x0000000001E8B1A0>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000000000B3E3230>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 63, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D940>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x000000000B3E2BA0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000000000B3E3230>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D940>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D940>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000000000B46C2F0>
+          └ <fastapi.applications.FastAPI object at 0x000000000B3E2BA0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000000000B4A1620>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000000000B3E3A10>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000000000B46C2F0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000000000B4A1620>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000000000B3E38C0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000000000B3E3A10>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000000000B4A1620>
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000000000B46DBE0>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000000000A0C0C20>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000000000B3E38C0>
+          └ <function wrap_app_handling_exceptions at 0x0000000004F6F920>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000000000A0C0C20>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x000000000B33BDF0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000000000A0C0C20>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method APIRouter.app of <fastapi.routing.APIRouter object at 0x000000000B33BDF0>>
+          └ <fastapi.routing.APIRouter object at 0x000000000B33BDF0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function _IncludedRouter.handle at 0x0000000004FB6480>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000000000B414830>, include_context=_RouterIncludeConte...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+          │    │               │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │    │               │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │    │               │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    │               └ <function APIRouter.handle at 0x0000000004FE44A0>
+          │    └ <fastapi.routing.APIRouter object at 0x000000000B414830>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000000000B414830>, include_context=_RouterIncludeConte...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+          │               │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │               │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │               │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │               └ <function _IncludedRouter._handle_selected at 0x0000000004FB6520>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000000000B414830>, include_context=_RouterIncludeConte...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function _IncludedRouter.handle at 0x0000000004FB6480>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x0000000009FCA210>, include_context=_RouterIncludeConte...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+          │    │               │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │    │               │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │    │               │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    │               └ <function APIRouter.handle at 0x0000000004FE44A0>
+          │    └ <fastapi.routing.APIRouter object at 0x0000000009FCA210>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x0000000009FCA210>, include_context=_RouterIncludeConte...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+          │               │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │               │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │               │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │               └ <function _IncludedRouter._handle_selected at 0x0000000004FB6520>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x0000000009FCA210>, include_context=_RouterIncludeConte...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+          │              │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │              │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │              │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │              └ <function APIRoute.handle at 0x0000000004FB44A0>
+          └ APIRoute(path='/scan', name='scan', methods=['POST'])
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app at 0x000000000B4A18A0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1760>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000000000B446350>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000000000B4A1940>
+          └ <function wrap_app_handling_exceptions at 0x0000000004F6F920>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000000000B4A1A80>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000000000B46D...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000000000B4A1940>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000000000B446350>
+                     └ <function get_request_handler.<locals>.app at 0x000000000B4A1800>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x0000000004FAF7E0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\fastapi\routing.py", line 352, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.Session object at 0x000000000B46E510>, 'request': ScanRequest(url='https://example.com')}
+                 │         └ <member 'call' of 'Dependant' objects>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+  File "E:\TrinetraAI\backend\app\api\routes\scan.py", line 40, in scan
+    ScanCRUD.save_scan(db, result)
+    │        │         │   └ {'scan_id': '20260912111505', 'generated_at': '2026-09-12T05:45:05.515146', 'url': 'https://example.com', 'risk': {'risk_scor...
+    │        │         └ <sqlalchemy.orm.session.Session object at 0x000000000B46E510>
+    │        └ <staticmethod(<function ScanCRUD.save_scan at 0x0000000009FDEF20>)>
+    └ <class 'app.crud.scan_crud.ScanCRUD'>
+
+> File "E:\TrinetraAI\backend\app\crud\scan_crud.py", line 36, in save_scan
+    db.flush()
+    │  └ <function Session.flush at 0x0000000007377880>
+    └ <sqlalchemy.orm.session.Session object at 0x000000000B46E510>
+
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4353, in flush
+    self._flush(objects)
+    │    │      └ None
+    │    └ <function Session._flush at 0x0000000007377A60>
+    └ <sqlalchemy.orm.session.Session object at 0x000000000B46E510>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000000000B4FDA00>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('(psycopg2.OperationalError) connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:f...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4449, in _flush
+    flush_context.execute()
+    │             └ <function UOWTransaction.execute at 0x00000000072F72E0>
+    └ <sqlalchemy.orm.unitofwork.UOWTransaction object at 0x000000000B4C0980>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 465, in execute
+    rec.execute(self)
+    │   │       └ <sqlalchemy.orm.unitofwork.UOWTransaction object at 0x000000000B4C0980>
+    │   └ <function SaveUpdateAll.execute at 0x00000000072F7E20>
+    └ SaveUpdateAll(Mapper[Scan(scans)])
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+    │    │         │               └ <function save_obj at 0x0000000007306840>
+    │    │         └ <module 'sqlalchemy.orm.persistence' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\sqlalchemy\\orm\\persistence.py'>
+    │    └ <module 'sqlalchemy.util.preloaded' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\sqlalchemy\\util\\preloaded.py'>
+    └ <module 'sqlalchemy.util' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 69, in save_obj
+    ) in _organize_states_for_save(base_mapper, states, uowtransaction):
+         │                         │            │       └ <sqlalchemy.orm.unitofwork.UOWTransaction object at 0x000000000B4C0980>
+         │                         │            └ <generator object UOWTransaction.states_for_mapper_hierarchy at 0x000000000B508E50>
+         │                         └ <Mapper at 0x9fc91d0; Scan>
+         └ <function _organize_states_for_save at 0x0000000007354B80>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 224, in _organize_states_for_save
+    for state, dict_, mapper, connection in _connections_for_states(
+                                            └ <function _connections_for_states at 0x00000000073554E0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1760, in _connections_for_states
+    connection = uowtransaction.transaction.connection(base_mapper)
+                 │              │           │          └ <Mapper at 0x9fc91d0; Scan>
+                 │              │           └ <function SessionTransaction.connection at 0x000000000736AE80>
+                 │              └ <sqlalchemy.orm.session.SessionTransaction object at 0x000000000B4517D0>
+                 └ <sqlalchemy.orm.unitofwork.UOWTransaction object at 0x000000000B4C0980>
+  File "<string>", line 2, in connection
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                │  │      │      └ {'execution_options': None}
+                │  │      └ (<Mapper at 0x9fc91d0; Scan>,)
+                │  └ <sqlalchemy.orm.session.SessionTransaction object at 0x000000000B4517D0>
+                └ <function SessionTransaction.connection at 0x000000000736ADE0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1041, in connection
+    return self._connection_for_bind(bind, execution_options)
+           │    │                    │     └ None
+           │    │                    └ Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode=...
+           │    └ <function SessionTransaction._connection_for_bind at 0x000000000736B600>
+           └ <sqlalchemy.orm.session.SessionTransaction object at 0x000000000B4517D0>
+  File "<string>", line 2, in _connection_for_bind
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                │  │      │      └ {}
+                │  │      └ (Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode...
+                │  └ <sqlalchemy.orm.session.SessionTransaction object at 0x000000000B4517D0>
+                └ <function SessionTransaction._connection_for_bind at 0x000000000736B420>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1177, in _connection_for_bind
+    conn = self._parent._connection_for_bind(
+           │    │       └ <function SessionTransaction._connection_for_bind at 0x000000000736B600>
+           │    └ <sqlalchemy.orm.session.SessionTransaction object at 0x000000000B451550>
+           └ <sqlalchemy.orm.session.SessionTransaction object at 0x000000000B4517D0>
+  File "<string>", line 2, in _connection_for_bind
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                │  │      │      └ {}
+                │  │      └ (Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode...
+                │  └ <sqlalchemy.orm.session.SessionTransaction object at 0x000000000B451550>
+                └ <function SessionTransaction._connection_for_bind at 0x000000000736B420>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1191, in _connection_for_bind
+    conn = bind.connect()
+           │    └ <function Engine.connect at 0x0000000006035120>
+           └ Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode=...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3295, in connect
+    return self._connection_cls(self)
+           │    │               └ Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode=...
+           │    └ <class 'sqlalchemy.engine.base.Connection'>
+           └ Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode=...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    │          └ <classmethod(<function Connection._handle_dbapi_exception_noconnection at 0x000000000602E980>)>
+    └ <class 'sqlalchemy.engine.base.Connection'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2450, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+          │                    │              │                 └ OperationalError('connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:ff9b::1418:493d), port 5432 f...
+          │                    │              └ (<class 'psycopg2.OperationalError'>, OperationalError('connection to server at "trinetra-ai-db-2026.postgres.database.azure....
+          │                    └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('(psycopg2.OperationalError) connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:f...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 144, in __init__
+    self._dbapi_connection = engine.raw_connection()
+    │                        │      └ <function Engine.raw_connection at 0x00000000060351C0>
+    │                        └ Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode=...
+    └ <sqlalchemy.engine.base.Connection object at 0x000000000B4C7610>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3319, in raw_connection
+    return self.pool.connect()
+           │    │    └ <function Pool.connect at 0x0000000005205B20>
+           │    └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+           └ Engine(postgresql+psycopg2://trinetraadmin:***@trinetra-ai-db-2026.postgres.database.azure.com:5432/flexibleserverdb?sslmode=...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 448, in connect
+    return _ConnectionFairy._checkout(self)
+           │                │         └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+           │                └ <classmethod(<function _ConnectionFairy._checkout at 0x0000000005207D80>)>
+           └ <class 'sqlalchemy.pool.base._ConnectionFairy'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1272, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            │                 │        └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+            │                 └ <classmethod(<function _ConnectionRecord.checkout at 0x00000000052067A0>)>
+            └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+          │    └ <function QueuePool._do_get at 0x0000000005209BC0>
+          └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 178, in _do_get
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000000000B4FD340>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:ff9b::1418:493d), port 5432 f...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 176, in _do_get
+    return self._create_connection()
+           │    └ <function Pool._create_connection at 0x00000000052058A0>
+           └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 389, in _create_connection
+    return _ConnectionRecord(self)
+           │                 └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+           └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000000000B4F5010>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py'>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000000000B493000>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:ff9b::1418:493d), port 5432 f...
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    │    │                               │    │               └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000000000B4F5010>
+    │    │                               │    └ <function create_engine.<locals>.connect at 0x0000000009DFC7C0>
+    │    │                               └ <sqlalchemy.pool.impl.QueuePool object at 0x0000000009E13CB0>
+    │    └ <member 'dbapi_connection' of '_ConnectionRecord' objects>
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000000000B4F5010>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\create.py", line 667, in connect
+    return dialect.connect(*cargs_tup, **cparams)
+           │       │        │            └ immutabledict({'host': 'trinetra-ai-db-2026.postgres.database.azure.com', 'dbname': 'flexibleserverdb', 'user': 'trinetraadmi...
+           │       │        └ []
+           │       └ <function DefaultDialect.connect at 0x00000000070BCAE0>
+           └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x0000000009E138C0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 630, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           │    │            │        │        └ {'host': 'trinetra-ai-db-2026.postgres.database.azure.com', 'dbname': 'flexibleserverdb', 'user': 'trinetraadmin', 'password'...
+           │    │            │        └ ()
+           │    │            └ <function connect at 0x0000000009F5E160>
+           │    └ <module 'psycopg2' from 'E:\\TrinetraAI\\backend\\venv\\Lib\\site-packages\\psycopg2\\__init__.py'>
+           └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x0000000009E138C0>
+  File "E:\TrinetraAI\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           │        │                       │                     └ {}
+           │        │                       └ None
+           │        └ 'host=trinetra-ai-db-2026.postgres.database.azure.com dbname=flexibleserverdb user=trinetraadmin password=trinetra2272 port=5...
+           └ <built-in function _connect>
+
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (64:ff9b::1418:493d), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (20.24.73.61), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-09-12 11:35:17.407 | INFO     | app.database.init_db:init_db:10 - Database schema initialization completed

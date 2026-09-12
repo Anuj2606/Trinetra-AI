@@ -1,0 +1,489 @@
+2026-09-12 11:12:10.660 | ERROR    | app.crud.scan_crud:save_scan:49 - Scan persistence failed type=RuntimeError message=database commit failed
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pytest\__main__.py", line 9, in <module>
+    raise SystemExit(_console_main())
+                     └ <function _console_main at 0x000000000228C5E0>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\config\__init__.py", line 253, in _console_main
+    code = _main(prog=_get_prog_name(sys.argv))
+           │          │              │   └ ['C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pytest\\__main__.py', 'backend/test_scan...
+           │          │              └ <module 'sys' (built-in)>
+           │          └ <function _get_prog_name at 0x000000000228C400>
+           └ <function _main at 0x000000000228C540>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\config\__init__.py", line 229, in _main
+    ret: ExitCode | int = config.hook.pytest_cmdline_main(config=config)
+         │                │      │    │                          └ <_pytest.config.Config object at 0x00000000024DA270>
+         │                │      │    └ <HookCaller 'pytest_cmdline_main'>
+         │                │      └ <pluggy._hooks.HookRelay object at 0x0000000002383B60>
+         │                └ <_pytest.config.Config object at 0x00000000024DA270>
+         └ <enum 'ExitCode'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'config': <_pytest.config.Config object at 0x00000000024DA270>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_cmdline_main'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_cmdline_main'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_cmdline_main'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'config': <_pytest.config.Config object at 0x00000000024DA270>}
+           │    │               │          └ [<HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python...
+           │    │               └ 'pytest_cmdline_main'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<_pytest.config.Config object at 0x00000000024DA270>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python3...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\main.py", line 377, in pytest_cmdline_main
+    return wrap_session(config, _main)
+           │            │       └ <function _main at 0x000000000233EAC0>
+           │            └ <_pytest.config.Config object at 0x00000000024DA270>
+           └ <function wrap_session at 0x000000000233E980>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\main.py", line 330, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+    │       │            │    │       └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>
+    │       │            │    └ <_pytest.config.Config object at 0x00000000024DA270>
+    │       │            └ <function _main at 0x000000000233EAC0>
+    │       └ <ExitCode.OK: 0>
+    └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\main.py", line 384, in _main
+    config.hook.pytest_runtestloop(session=session)
+    │      │    │                          └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>
+    │      │    └ <HookCaller 'pytest_runtestloop'>
+    │      └ <pluggy._hooks.HookRelay object at 0x0000000002383B60>
+    └ <_pytest.config.Config object at 0x00000000024DA270>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'session': <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtestloop'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtestloop'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtestloop'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'session': <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>}
+           │    │               │          └ [<HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python...
+           │    │               └ 'pytest_runtestloop'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python3...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\main.py", line 408, in pytest_runtestloop
+    item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+    │    │                                        │              └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+    │    │                                        └ <Function test_database_failure_rolls_back_and_reraises>
+    │    └ <member 'config' of 'Node' objects>
+    └ <Function test_database_failure_rolls_back_and_reraises>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'item': <Function test_database_failure_rolls_back_and_reraises>, 'nextitem': <Function test_rollback_failure_does_not_escap...
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtest_protocol'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtest_protocol'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtest_protocol'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'item': <Function test_database_failure_rolls_back_and_reraises>, 'nextitem': <Function test_rollback_failure_does_not_escap...
+           │    │               │          └ [<HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Py...
+           │    │               └ 'pytest_runtest_protocol'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Function test_database_failure_rolls_back_and_reraises>, <Function test_rollback_failure_does_not_escape_scan_as_http_500>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Pyt...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 118, in pytest_runtest_protocol
+    runtestprotocol(item, nextitem=nextitem)
+    │               │              └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+    │               └ <Function test_database_failure_rolls_back_and_reraises>
+    └ <function runtestprotocol at 0x000000000233DB20>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 139, in runtestprotocol
+    reports.append(call_and_report(item, "call", log))
+    │       │      │               │             └ True
+    │       │      │               └ <Function test_database_failure_rolls_back_and_reraises>
+    │       │      └ <function call_and_report at 0x000000000233DF80>
+    │       └ <method 'append' of 'list' objects>
+    └ [<TestReport 'backend/test_scan_persistence.py::test_database_failure_rolls_back_and_reraises' when='setup' outcome='passed'>]
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 249, in call_and_report
+    call = CallInfo.from_call(
+           │        └ <classmethod(<function CallInfo.from_call at 0x000000000233E340>)>
+           └ <class '_pytest.runner.CallInfo'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 361, in from_call
+    result: TResult | None = func()
+            │                └ <function call_and_report.<locals>.<lambda> at 0x000000000AEFD9E0>
+            └ +TResult
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 250, in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            │                 │       └ {}
+            │                 └ <Function test_database_failure_rolls_back_and_reraises>
+            └ <HookCaller 'pytest_runtest_call'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ False
+           │    │         │    │     │    │                  └ {'item': <Function test_database_failure_rolls_back_and_reraises>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtest_call'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtest_call'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtest_call'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ False
+           │    │               │          │        └ {'item': <Function test_database_failure_rolls_back_and_reraises>}
+           │    │               │          └ [<HookImpl plugin_name='threadexception', plugin=<module '_pytest.threadexception' from 'C:\\Users\\vishw\\AppData\\Local\\Pr...
+           │    │               └ 'pytest_runtest_call'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Function test_database_failure_rolls_back_and_reraises>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Pyt...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 184, in pytest_runtest_call
+    item.runtest()
+    │    └ <function Function.runtest at 0x00000000023FC5E0>
+    └ <Function test_database_failure_rolls_back_and_reraises>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\python.py", line 1707, in runtest
+    self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+    │    │                                   └ <Function test_database_failure_rolls_back_and_reraises>
+    │    └ <property object at 0x00000000022BC2C0>
+    └ <Function test_database_failure_rolls_back_and_reraises>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'pyfuncitem': <Function test_database_failure_rolls_back_and_reraises>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_pyfunc_call'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_pyfunc_call'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_pyfunc_call'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'pyfuncitem': <Function test_database_failure_rolls_back_and_reraises>}
+           │    │               │          └ [<HookImpl plugin_name='python', plugin=<module '_pytest.python' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Py...
+           │    │               └ 'pytest_pyfunc_call'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Function test_database_failure_rolls_back_and_reraises>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='python', plugin=<module '_pytest.python' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Pyt...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\python.py", line 167, in pytest_pyfunc_call
+    result = testfunction(**testargs)
+             │              └ {'monkeypatch': <_pytest.monkeypatch.MonkeyPatch object at 0x00000000052DB950>}
+             └ <function test_database_failure_rolls_back_and_reraises at 0x000000000AEFCCC0>
+
+  File "E:\TrinetraAI\backend\test_scan_persistence.py", line 96, in test_database_failure_rolls_back_and_reraises
+    ScanCRUD.save_scan(db, result_with_non_json_values())
+    │        │         │   └ <function result_with_non_json_values at 0x0000000006D10040>
+    │        │         └ <test_scan_persistence.FakeSession object at 0x00000000052AD450>
+    │        └ <staticmethod(<function ScanCRUD.save_scan at 0x000000000AA298A0>)>
+    └ <class 'app.crud.scan_crud.ScanCRUD'>
+
+> File "E:\TrinetraAI\backend\app\crud\scan_crud.py", line 47, in save_scan
+    db.commit()
+    │  └ <function FakeSession.commit at 0x000000000AEFCAE0>
+    └ <test_scan_persistence.FakeSession object at 0x00000000052AD450>
+
+  File "E:\TrinetraAI\backend\test_scan_persistence.py", line 48, in commit
+    raise RuntimeError("database commit failed")
+
+RuntimeError: database commit failed
+2026-09-12 11:12:10.800 | INFO     | app.api.routes.scan:scan:28 - Scan started
+2026-09-12 11:12:10.800 | ERROR    | app.api.routes.scan:scan:45 - Database rollback failed after scan persistence error
+Traceback (most recent call last):
+
+  File "E:\TrinetraAI\backend\app\api\routes\scan.py", line 40, in scan
+    ScanCRUD.save_scan(db, result)
+    │        │         │   └ {'url': 'https://example.com', 'risk': {'risk_score': 1, 'risk_level': 'SAFE', 'confidence': 99}, 'fraud_analysis': {'attack_...
+    │        │         └ <test_scan_persistence.FakeSession object at 0x00000000052AFD90>
+    │        └ <function test_rollback_failure_does_not_escape_scan_as_http_500.<locals>.<lambda> at 0x000000000AEFE520>
+    └ <class 'app.crud.scan_crud.ScanCRUD'>
+
+  File "E:\TrinetraAI\backend\test_scan_persistence.py", line 109, in <lambda>
+    lambda db, result: (_ for _ in ()).throw(RuntimeError("database commit failed")),
+           │   └ {'url': 'https://example.com', 'risk': {'risk_score': 1, 'risk_level': 'SAFE', 'confidence': 99}, 'fraud_analysis': {'attack_...
+           └ <test_scan_persistence.FakeSession object at 0x00000000052AFD90>
+
+  File "E:\TrinetraAI\backend\test_scan_persistence.py", line 109, in <genexpr>
+    lambda db, result: (_ for _ in ()).throw(RuntimeError("database commit failed")),
+
+RuntimeError: database commit failed
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pytest\__main__.py", line 9, in <module>
+    raise SystemExit(_console_main())
+                     └ <function _console_main at 0x000000000228C5E0>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\config\__init__.py", line 253, in _console_main
+    code = _main(prog=_get_prog_name(sys.argv))
+           │          │              │   └ ['C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pytest\\__main__.py', 'backend/test_scan...
+           │          │              └ <module 'sys' (built-in)>
+           │          └ <function _get_prog_name at 0x000000000228C400>
+           └ <function _main at 0x000000000228C540>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\config\__init__.py", line 229, in _main
+    ret: ExitCode | int = config.hook.pytest_cmdline_main(config=config)
+         │                │      │    │                          └ <_pytest.config.Config object at 0x00000000024DA270>
+         │                │      │    └ <HookCaller 'pytest_cmdline_main'>
+         │                │      └ <pluggy._hooks.HookRelay object at 0x0000000002383B60>
+         │                └ <_pytest.config.Config object at 0x00000000024DA270>
+         └ <enum 'ExitCode'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'config': <_pytest.config.Config object at 0x00000000024DA270>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_cmdline_main'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_cmdline_main'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_cmdline_main'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'config': <_pytest.config.Config object at 0x00000000024DA270>}
+           │    │               │          └ [<HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python...
+           │    │               └ 'pytest_cmdline_main'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<_pytest.config.Config object at 0x00000000024DA270>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python3...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\main.py", line 377, in pytest_cmdline_main
+    return wrap_session(config, _main)
+           │            │       └ <function _main at 0x000000000233EAC0>
+           │            └ <_pytest.config.Config object at 0x00000000024DA270>
+           └ <function wrap_session at 0x000000000233E980>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\main.py", line 330, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+    │       │            │    │       └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>
+    │       │            │    └ <_pytest.config.Config object at 0x00000000024DA270>
+    │       │            └ <function _main at 0x000000000233EAC0>
+    │       └ <ExitCode.OK: 0>
+    └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\main.py", line 384, in _main
+    config.hook.pytest_runtestloop(session=session)
+    │      │    │                          └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>
+    │      │    └ <HookCaller 'pytest_runtestloop'>
+    │      └ <pluggy._hooks.HookRelay object at 0x0000000002383B60>
+    └ <_pytest.config.Config object at 0x00000000024DA270>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'session': <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtestloop'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtestloop'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtestloop'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'session': <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>}
+           │    │               │          └ [<HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python...
+           │    │               └ 'pytest_runtestloop'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=3>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python3...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\main.py", line 408, in pytest_runtestloop
+    item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+    │    │                                        │              └ None
+    │    │                                        └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+    │    └ <member 'config' of 'Node' objects>
+    └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'item': <Function test_rollback_failure_does_not_escape_scan_as_http_500>, 'nextitem': None}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtest_protocol'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtest_protocol'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtest_protocol'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'item': <Function test_rollback_failure_does_not_escape_scan_as_http_500>, 'nextitem': None}
+           │    │               │          └ [<HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Py...
+           │    │               └ 'pytest_runtest_protocol'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Function test_rollback_failure_does_not_escape_scan_as_http_500>, None]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Pyt...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 118, in pytest_runtest_protocol
+    runtestprotocol(item, nextitem=nextitem)
+    │               │              └ None
+    │               └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+    └ <function runtestprotocol at 0x000000000233DB20>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 139, in runtestprotocol
+    reports.append(call_and_report(item, "call", log))
+    │       │      │               │             └ True
+    │       │      │               └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+    │       │      └ <function call_and_report at 0x000000000233DF80>
+    │       └ <method 'append' of 'list' objects>
+    └ [<TestReport 'backend/test_scan_persistence.py::test_rollback_failure_does_not_escape_scan_as_http_500' when='setup' outcome=...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 249, in call_and_report
+    call = CallInfo.from_call(
+           │        └ <classmethod(<function CallInfo.from_call at 0x000000000233E340>)>
+           └ <class '_pytest.runner.CallInfo'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 361, in from_call
+    result: TResult | None = func()
+            │                └ <function call_and_report.<locals>.<lambda> at 0x000000000AEFD9E0>
+            └ +TResult
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 250, in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            │                 │       └ {}
+            │                 └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+            └ <HookCaller 'pytest_runtest_call'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ False
+           │    │         │    │     │    │                  └ {'item': <Function test_rollback_failure_does_not_escape_scan_as_http_500>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtest_call'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtest_call'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtest_call'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ False
+           │    │               │          │        └ {'item': <Function test_rollback_failure_does_not_escape_scan_as_http_500>}
+           │    │               │          └ [<HookImpl plugin_name='threadexception', plugin=<module '_pytest.threadexception' from 'C:\\Users\\vishw\\AppData\\Local\\Pr...
+           │    │               └ 'pytest_runtest_call'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Function test_rollback_failure_does_not_escape_scan_as_http_500>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Pyt...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\runner.py", line 184, in pytest_runtest_call
+    item.runtest()
+    │    └ <function Function.runtest at 0x00000000023FC5E0>
+    └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\python.py", line 1707, in runtest
+    self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+    │    │                                   └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+    │    └ <property object at 0x00000000022BC2C0>
+    └ <Function test_rollback_failure_does_not_escape_scan_as_http_500>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'pyfuncitem': <Function test_rollback_failure_does_not_escape_scan_as_http_500>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_pyfunc_call'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_pyfunc_call'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_pyfunc_call'>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'pyfuncitem': <Function test_rollback_failure_does_not_escape_scan_as_http_500>}
+           │    │               │          └ [<HookImpl plugin_name='python', plugin=<module '_pytest.python' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Py...
+           │    │               └ 'pytest_pyfunc_call'
+           │    └ <function _multicall at 0x0000000001B3F7E0>
+           └ <_pytest.config.PytestPluginManager object at 0x0000000001257380>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Function test_rollback_failure_does_not_escape_scan_as_http_500>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='python', plugin=<module '_pytest.python' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Pyt...
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\site-packages\_pytest\python.py", line 167, in pytest_pyfunc_call
+    result = testfunction(**testargs)
+             │              └ {'monkeypatch': <_pytest.monkeypatch.MonkeyPatch object at 0x000000000AEAAC30>}
+             └ <function test_rollback_failure_does_not_escape_scan_as_http_500 at 0x000000000AEFCD60>
+
+  File "E:\TrinetraAI\backend\test_scan_persistence.py", line 114, in test_rollback_failure_does_not_escape_scan_as_http_500
+    asyncio.run(scan_route.scan(ScanRequest(url=payload["url"]), db))
+    │       │   │          │    │               │                └ <test_scan_persistence.FakeSession object at 0x00000000052AFD90>
+    │       │   │          │    │               └ {'url': 'https://example.com', 'risk': {'risk_score': 1, 'risk_level': 'SAFE', 'confidence': 99}, 'fraud_analysis': {'attack_...
+    │       │   │          │    └ <class 'app.schemas.scan.ScanRequest'>
+    │       │   │          └ <function scan at 0x00000000052A2B60>
+    │       │   └ <module 'app.api.routes.scan' from 'E:\\TrinetraAI\\backend\\app\\api\\routes\\scan.py'>
+    │       └ <function run at 0x000000000407B7E0>
+    └ <module 'asyncio' from 'C:\\Users\\vishw\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object scan at 0x00000000052B8340>
+           │      └ <function Runner.run at 0x0000000004964A40>
+           └ <asyncio.runners.Runner object at 0x00000000052C3E00>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<scan() running at E:\TrinetraAI\backend\app\api\routes\scan.py:45> cb=[_run_until_complete_...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000000000495E480>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000000052C3E00>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000000000495E3E0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000000004964220>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2040, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000000040D9A80>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000000000527E3E0>()>
+  File "C:\Users\vishw\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000000000527E3E0>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000000000527E3E0>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000000000527E3E0>()>
+
+> File "E:\TrinetraAI\backend\app\api\routes\scan.py", line 43, in scan
+    db.rollback()
+    │  └ <function FakeSession.rollback at 0x000000000AEFCB80>
+    └ <test_scan_persistence.FakeSession object at 0x00000000052AFD90>
+
+  File "E:\TrinetraAI\backend\test_scan_persistence.py", line 52, in rollback
+    raise RuntimeError("database rollback failed")
+
+RuntimeError: database rollback failed

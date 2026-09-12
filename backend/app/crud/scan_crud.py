@@ -40,7 +40,7 @@ class ScanCRUD:
                     scan_id=scan.id,
                     provider=provider,
                     success=response.get("success", False),
-                    response=json.loads(json.dumps(response, default=str)),
+                    response=json.loads(json.dumps(response, default=str).replace("\\u0000", "")),
                 )
                 db.add(provider_row)
 

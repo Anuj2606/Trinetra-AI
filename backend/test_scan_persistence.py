@@ -64,6 +64,7 @@ def result_with_non_json_values():
                 "when": datetime(2026, 1, 1),
                 "values": {"a", "b"},
                 "object": object(),
+                "null_byte": "null\u0000byte",
             }
         },
     }
@@ -82,6 +83,7 @@ def test_success_persists_scan_and_provider_atomically(monkeypatch):
     assert isinstance(db.items[1].response["when"], str)
     assert isinstance(db.items[1].response["values"], str)
     assert isinstance(db.items[1].response["object"], str)
+    assert db.items[1].response["null_byte"] == "nullbyte"
     assert db.items[1].scan_id == scan.id
 
 
