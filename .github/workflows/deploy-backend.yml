@@ -46,73 +46,42 @@ jobs:
           echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
 
       - name: Deploy Container App
-        env:
-          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-          DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
-          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          DATABASE_USER: ${{ secrets.DATABASE_USER }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          VIRUSTOTAL_API_KEY: ${{ secrets.VIRUSTOTAL_API_KEY }}
-          SAFE_BROWSING_API_KEY: ${{ secrets.SAFE_BROWSING_API_KEY }}
-          URLSCAN_API_KEY: ${{ secrets.URLSCAN_API_KEY }}
         run: |
-          SECRETS=(
-            "database-host=$DATABASE_HOST"
-            "database-port=$DATABASE_PORT"
-            "database-name=$DATABASE_NAME"
-            "database-user=$DATABASE_USER"
-            "database-password=$DATABASE_PASSWORD"
-            "gemini-api-key=$GEMINI_API_KEY"
-            "virustotal-api-key=$VIRUSTOTAL_API_KEY"
-            "safe-browsing-api-key=$SAFE_BROWSING_API_KEY"
-            "urlscan-api-key=$URLSCAN_API_KEY"
-          )
-
-          ENV_VARS=(
-            "DATABASE_HOST=secretref:database-host"
-            "DATABASE_PORT=secretref:database-port"
-            "DATABASE_NAME=secretref:database-name"
-            "DATABASE_USER=secretref:database-user"
-            "DATABASE_PASSWORD=secretref:database-password"
-            "DATABASE_SSLMODE=require"
-            "GEMINI_API_KEY=secretref:gemini-api-key"
-            "VIRUSTOTAL_API_KEY=secretref:virustotal-api-key"
-            "SAFE_BROWSING_API_KEY=secretref:safe-browsing-api-key"
-            "URLSCAN_API_KEY=secretref:urlscan-api-key"
-          )
-
-          if az containerapp show \
+          az containerapp update \
             --name "$CONTAINER_APP_NAME" \
             --resource-group "$RESOURCE_GROUP" \
-            --output none 2>/dev/null; then
-            az containerapp secret set \
-              --name "$CONTAINER_APP_NAME" \
-              --resource-group "$RESOURCE_GROUP" \
-              --secrets "${SECRETS[@]}"
+            --image "$IMAGE"
 
-            az containerapp update \
-              --name "$CONTAINER_APP_NAME" \
-              --resource-group "$RESOURCE_GROUP" \
-              --image "$IMAGE" \
-              --set-env-vars "${ENV_VARS[@]}" \
-              --min-replicas 0 \
-              --max-replicas 2
-          else
-            az containerapp create \
-              --name "$CONTAINER_APP_NAME" \
-              --resource-group "$RESOURCE_GROUP" \
-              --environment "$CONTAINER_ENVIRONMENT" \
-              --image "$IMAGE" \
-              --registry-server "$ACR_LOGIN_SERVER" \
-              --registry-username "${{ secrets.AZURE_CLIENT_ID }}" \
-              --registry-password "${{ secrets.AZURE_CLIENT_SECRET }}" \
-              --secrets "${SECRETS[@]}" \
-              --env-vars "${ENV_VARS[@]}" \
-              --ingress external \
-              --target-port 8000 \
-              --cpu 0.5 \
-              --memory 1.0Gi \
-              --min-replicas 0 \
-              --max-replicas 2
+          DEPLOYED_IMAGE=$(az containerapp show \
+            --name "$CONTAINER_APP_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --query "properties.template.containers[0].image" \
+            --output tsv)
+
+          if [ "$DEPLOYED_IMAGE" != "$IMAGE" ]; then
+            echo "Container App image mismatch: expected $IMAGE, got $DEPLOYED_IMAGE"
+            exit 1
           fi
+
+          az containerapp show \
+            --name "$CONTAINER_APP_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --query "{name:name,revision:properties.latestRevisionName,image:properties.template.containers[0].image,provisioningState:properties.provisioningState}" \
+            --output table
+
+          ACTIVE_IMAGE=$(az containerapp revision list \
+            --name "$CONTAINER_APP_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --query '[?properties.active == `true` && properties.trafficWeight == `100`].properties.template.containers[0].image | [0]' \
+            --output tsv)
+
+          if [ "$ACTIVE_IMAGE" != "$IMAGE" ]; then
+            echo "Active revision image mismatch: expected $IMAGE, got $ACTIVE_IMAGE"
+            exit 1
+          fi
+
+          az containerapp revision list \
+            --name "$CONTAINER_APP_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --query "[].{name:name,active:properties.active,traffic:properties.trafficWeight,image:properties.template.containers[0].image}" \
+            --output table
