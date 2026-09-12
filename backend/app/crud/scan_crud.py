@@ -51,7 +51,7 @@ class ScanCRUD:
 
                     success=response.get("success", False),
 
-                    response=response
+                    response=json.loads(json.dumps(response, default=str))
 
                 )
 

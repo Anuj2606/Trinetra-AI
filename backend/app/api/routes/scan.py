@@ -25,10 +25,12 @@ async def scan(
             detail="Invalid URL format. Please enter a valid, fully-qualified domain name (e.g. http://example.com)"
         )
 
+    app_logger.info("Scan started")
+
     try:
         result = await orchestrator.analyze(request.url)
     except Exception:
-        app_logger.exception("Scan analysis failed for URL: {}", request.url)
+        app_logger.exception("Scan analysis failed")
         raise HTTPException(
             status_code=502,
             detail="Unable to complete the scan. Please try again later."
@@ -36,12 +38,16 @@ async def scan(
 
     try:
         ScanCRUD.save_scan(db, result)
-    except Exception:
-        db.rollback()
-        app_logger.exception("Scan persistence failed for URL: {}", request.url)
+    except Exception as persistence_error:
+        app_logger.exception("Scan persistence failed")
+        try:
+            db.rollback()
+        except Exception:
+            app_logger.exception("Database rollback failed after scan persistence error")
         raise HTTPException(
             status_code=503,
             detail="Scan completed but could not be saved. Please try again later."
-        )
+        ) from persistence_error
 
+    app_logger.info("Scan completed risk_score={}", result.get("risk", {}).get("risk_score"))
     return result

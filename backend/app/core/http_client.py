@@ -12,6 +12,7 @@ from app.core.exceptions import (
     ExternalServiceUnavailableError,
     ProviderError,
 )
+from app.core.logger import app_logger
 
 
 class HTTPClient:
@@ -51,23 +52,22 @@ class HTTPClient:
                     return None
                
 
-            print("\n========== HTTP GET ERROR ==========")
-            print("URL:", e.request.url)
-            print("Status:", e.response.status_code)
-            print("Response:", e.response.text)
+            app_logger.error(
+                "HTTP GET provider request failed with status {}",
+                e.response.status_code,
+            )
 
             raise ProviderError(
                 f"HTTP Error: {e.response.status_code}"
             ) from e
 
         except httpx.RequestError as e:
-
-            print("\n========== REQUEST ERROR ==========")
-            print(e)
-            print("===================================\n")
-
+            app_logger.error(
+                "HTTP GET provider request failed: {}",
+                type(e).__name__,
+            )
             raise ExternalServiceUnavailableError(
-                f"Unable to connect to {url}"
+                "Unable to connect to provider"
             ) from e
 
     async def post(
@@ -93,26 +93,22 @@ class HTTPClient:
 
         except httpx.HTTPStatusError as e:
 
-            print("\n========== HTTP POST ERROR ==========")
-            print("URL:", e.request.url)
-            print("Status:", e.response.status_code)
-            print("Headers:", dict(e.request.headers))
-            print("Request JSON:", json)
-            print("Response:", e.response.text)
-            print("=====================================\n")
-
+            app_logger.error(
+                "HTTP POST provider request failed with status {}",
+                e.response.status_code,
+            )
             raise ProviderError(
                 f"HTTP Error: {e.response.status_code}"
             ) from e
 
         except httpx.RequestError as e:
-
-            print("\n========== REQUEST ERROR ==========")
-            print(e)
-            print("===================================\n")
+            app_logger.error(
+                "HTTP POST provider request failed: {}",
+                type(e).__name__,
+            )
 
             raise ExternalServiceUnavailableError(
-                f"Unable to connect to {url}"
+                "Unable to connect to provider"
             ) from e
 
     async def close(self):
