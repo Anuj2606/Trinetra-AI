@@ -14,6 +14,10 @@
 </p>
 
 <p align="center">
+  <a href="https://trinetra-frontend.victoriousfield-eaef4743.eastasia.azurecontainerapps.io"><strong>🚀 Try Live Demo</strong></a>
+</p>
+
+<p align="center">
   <a href="#-key-features">Features</a> •
   <a href="#-system-architecture">Architecture</a> •
   <a href="#-how-it-works">How It Works</a> •
@@ -475,12 +479,13 @@ The frontend will be available at `http://localhost:5173` and the backend at `ht
 
 ## ☁️ Azure Deployment
 
-Trinetra AI is deployed to Azure using GitHub Actions, Azure Container Registry, and Azure Container Apps.
+Trinetra AI is deployed to Azure using [GitHub Actions](https://github.com/features/actions), [Azure Container Registry](https://azure.microsoft.com/en-us/products/container-registry/), and [Azure Container Apps](https://azure.microsoft.com/en-us/products/container-apps/).
 
 ### Azure Resources
 
 | Resource | Value |
 |---|---|
+| **Live URL (Frontend)** | [https://trinetra-frontend.victoriousfield-eaef4743.eastasia.azurecontainerapps.io](https://trinetra-frontend.victoriousfield-eaef4743.eastasia.azurecontainerapps.io) |
 | **Container Registry** | `ca4a568f175bacr.azurecr.io` |
 | **Resource Group** | `rg-trinetra-ai` |
 | **Container Apps Environment** | `trinetra-env` |
@@ -491,10 +496,10 @@ Trinetra AI is deployed to Azure using GitHub Actions, Azure Container Registry,
 
 The workflows run automatically when changes are pushed to the `main` branch:
 
-- `.github/workflows/deploy-backend.yml` builds and deploys the FastAPI backend.
-- `.github/workflows/deploy-frontend.yml` builds and deploys the React frontend.
+- [`.github/workflows/deploy-backend.yml`](./.github/workflows/deploy-backend.yml) builds and deploys the FastAPI backend.
+- [`.github/workflows/deploy-frontend.yml`](./.github/workflows/deploy-frontend.yml) builds and deploys the React frontend.
 
-Both workflows build Docker images, push them to Azure Container Registry, and deploy new revisions to Azure Container Apps.
+Both workflows build Docker images, push them to [Azure Container Registry](https://azure.microsoft.com/en-us/products/container-registry/), and deploy new revisions to [Azure Container Apps](https://azure.microsoft.com/en-us/products/container-apps/).
 
 ### Required GitHub Secrets
 

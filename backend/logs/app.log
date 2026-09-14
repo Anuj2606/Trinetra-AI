@@ -528,3 +528,5 @@ connection to server at "trinetra-ai-db-2026.postgres.database.azure.com" (20.24
 
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 2026-09-12 11:35:17.407 | INFO     | app.database.init_db:init_db:10 - Database schema initialization completed
+2026-09-12 11:35:46.212 | INFO     | app.api.routes.scan:scan:28 - Scan started
+2026-09-12 11:36:05.970 | INFO     | app.api.routes.scan:scan:51 - Scan completed risk_score=0
